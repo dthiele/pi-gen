@@ -3,10 +3,14 @@
 flush ruleset
 
 table inet nat {
-#    chain prerouting {
-#        type nat hook prerouting priority dstnat;
-#        iif {{router.ifname_wan}} tcp dport {22} dnat to 10.0.0.1
-#    }
+	chain prerouting {
+		type nat hook prerouting priority dstnat;
+{% if router.dnat is defined -%}
+{%- for d in router.dnat %}
+		iif {{router.ifname_wan}} {{d.protocol}} dport { {{d.origin_port}} } dnat ip to {{d.destination_ipv4}}:{{d.destination_port}}
+{% endfor -%}
+{% endif %}
+	}
 	chain postrouting {
 		type nat hook postrouting priority srcnat;
 		oif {{router.ifname_wan}} masquerade

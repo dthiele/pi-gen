@@ -236,7 +236,15 @@
     }
   ],
   "router": {
-    "ifname_wan": "eth1"
+    "ifname_wan": "eth1",
+    "dnat": [
+      {
+        "protocol": "tcp",
+        "origin_port": 22,
+        "destination_ipv4": "10.0.2.1",
+        "destination_port": 22222
+      }
+    ]
   },
   "packet_filter": {},
   "sysctls": {},
