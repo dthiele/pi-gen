@@ -1,0 +1,17 @@
+include "/etc/kea-dhcp-ns.key";
+include "/etc/bind/named.conf.options";
+include "/etc/bind/named.conf.local";
+include "/etc/bind/named.conf.default-zones";
+include "/etc/bind/named.conf.zones";
+
+//logging {
+//    channel xfer-log {
+//        file "/var/log/named.log";
+//            print-category yes;
+//            print-severity yes;
+//            severity info;
+//        };
+//        category xfer-in { xfer-log; };
+//        category xfer-out { xfer-log; };
+//        category notify { xfer-log; };
+//};

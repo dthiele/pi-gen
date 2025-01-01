@@ -1,0 +1,26 @@
+#!/usr/bin/nft -f
+
+flush ruleset
+
+table inet nat {
+#    chain prerouting {
+#        type nat hook prerouting priority dstnat;
+#        iif {{router.ifname_wan}} tcp dport {22} dnat to 10.0.0.1
+#    }
+	chain postrouting {
+		type nat hook postrouting priority srcnat;
+		oif {{router.ifname_wan}} masquerade
+	}
+}
+
+table inet filter {
+	chain input {
+		type filter hook input priority filter; policy accept;
+	}
+	chain forward {
+		type filter hook forward priority filter; policy accept;
+	}
+	chain output {
+		type filter hook output priority filter; policy accept;
+	}
+}

@@ -1,0 +1,22 @@
+[Match]                                             
+Name={{name}}
+
+[Network]
+{% if not ipv4.enabled or ipv4.address is defined -%}
+DHCP=no
+{% else -%}
+DHCP=yes
+{% endif -%}
+DNSSEC=no
+{% if vlan_interfaces is defined -%}
+{% for vlan_ifname in vlan_interfaces -%}
+VLAN={{vlan_ifname}}
+{% endfor -%}
+{% endif -%}
+
+{% if ipv4.enabled and ipv4.address is defined %}
+[Address]
+{% for address in ipv4.address -%}
+Address={{address.ip}}/{{address.prefix_length}}
+{% endfor -%}
+{% endif -%}

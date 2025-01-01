@@ -1,0 +1,20 @@
+options {
+    directory "/var/cache/bind";
+    pid-file "/run/named/named.pid";
+
+    // Uncomment these to enable IPv6 connections support
+    // IPv4 will still work:
+    //  listen-on-v6 { any; };
+    listen-on { 127.0.0.1; {% for i in interfaces if i.type == "l2vlan" %}10.{{i.vlan_id//256}}.{{i.vlan_id%256}}.1; {% endfor %} };
+
+    allow-recursion { 127.0.0.1; {% for i in interfaces if i.type == "l2vlan" %}10.{{i.vlan_id//256}}.{{i.vlan_id%256}}.0/24; {% endfor %} };
+    allow-query { 127.0.0.1; {% for i in interfaces if i.type == "l2vlan" %}10.{{i.vlan_id//256}}.{{i.vlan_id%256}}.0/24; {% endfor %} };
+    allow-transfer { none; };
+    allow-update { none; };
+
+    forwarders { 8.8.8.8; 1.1.1.1; };
+
+    version none;
+    hostname none;
+    server-id none;
+};

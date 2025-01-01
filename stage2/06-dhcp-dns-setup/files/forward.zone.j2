@@ -1,0 +1,15 @@
+$ORIGIN {{zone}}.
+$TTL 2h
+
+@         IN      SOA     ns1.{{zone}}. hostmaster.{{zone}}. (
+                                2023101501 ; Serial
+                                3600         ; Refresh
+                                900        ; Retry
+                                3600000         ; Expire
+                                3600 )       ; Negative Cache TTL
+          IN      NS      ns1
+                
+@         IN      A       10.0.2.1
+{% for h in hosts -%}
+{{h.hostname}}	IN	A	{{h.ipv4}}
+{% endfor -%}

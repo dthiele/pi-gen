@@ -1,0 +1,15 @@
+$ORIGIN {{reverse}}.in-addr.arpa.
+$TTL 2h
+
+@        IN       SOA     ns1.{{zone}}. hostmaster.{{zone}}. (
+                                2023101503 ; Serial
+                                3600     ; Refresh
+                                900        ; Retry
+                                3600000         ; Expire
+                                3600 )       ; Negative Cache TTL
+;
+         IN       NS      ns1.{{zone}}.
+;
+{% for h in hosts -%}
+{{h.ipv4 | in_addr_arpa}}	IN	PTR	{{h.hostname}}.{{zone}}.
+{% endfor -%}

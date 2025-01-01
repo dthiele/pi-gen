@@ -1,0 +1,15 @@
+{% for z in dns.zones -%}
+zone "{{z.zone}}" IN {
+    type master;
+    file "/var/lib/bind/{{z.zone}}.zone";
+    update-policy { grant {{dns.ddns.key_name}} wildcard *.{{z.zone}} A DHCID; };
+};
+
+zone "{{z.reverse}}.in-addr.arpa" IN {
+    type master;
+    file "/var/lib/bind/{{z.reverse}}.zone";
+    update-policy { grant {{dns.ddns.key_name}} wildcard *.{{z.reverse}}.in-addr.arpa PTR DHCID; };
+};
+
+{% endfor -%}
+

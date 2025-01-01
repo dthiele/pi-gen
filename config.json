@@ -1,0 +1,264 @@
+{
+  "interfaces": [
+    {
+      "name": "eth0",
+      "description": "Management interface",
+      "enabled": true,
+      "type": "ethernetCsmacd",
+      "ipv4": {
+        "enabled": true,
+        "forwarding": false,
+        "address": [
+          {
+            "ip": "10.0.0.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth1",
+      "description": "WAN interface",
+      "enabled": true,
+      "type": "ethernetCsmacd",
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true
+      }
+    },
+    {
+      "name": "eth2",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "ethernetCsmacd",
+      "ipv4": {
+        "enabled": false,
+        "forwarding": false
+      }
+    },
+    {
+      "name": "eth2.2",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 2,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.2.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.16",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 16,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.16.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.32",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 32,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.32.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.48",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 48,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.48.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.64",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 64,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.64.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.80",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 80,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.80.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.96",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 96,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.96.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.112",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 112,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.112.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.128",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 128,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.128.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.129",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 129,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.129.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "eth2.130",
+      "description": "LAN interface",
+      "enabled": true,
+      "type": "l2vlan",
+      "base_interface": "eth2",
+      "vlan_id": 130,
+      "ipv4": {
+        "enabled": true,
+        "forwarding": true,
+        "address": [
+          {
+            "ip": "10.0.130.1",
+            "prefix_length": 24
+          }
+        ]
+      }
+    }
+  ],
+  "router": {
+    "ifname_wan": "eth1"
+  },
+  "packet_filter": {},
+  "sysctls": {},
+  "dns": {
+    "server": {
+        "ipv4_address": "10.0.2.1"
+    },
+    "zones": [
+      {
+        "zone": "thiele.lan",
+        "reverse": "10",
+        "hosts": [
+          {
+            "hostname": "ns1",
+            "ipv4": "10.0.2.1"
+          },
+          {
+            "hostname": "router",
+            "ipv4": "10.0.2.1"
+          }
+        ]
+      }
+    ]
+  }
+}
