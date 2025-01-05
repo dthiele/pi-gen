@@ -106,7 +106,7 @@
         // "name": "domain-name" or "code": 15.
         {
             "code": 15,
-            "data": "thiele.lan"
+            "data": "{{ dns.zones[0].zone }}"
         },
 
         // Domain search is also a popular option. It tells the client to
@@ -115,7 +115,7 @@
         // foo.mydomain.example.com and if it fails, then as foo.example.com
         {
             "name": "domain-search",
-            "data": "thiele.lan"
+            "data": "{{ dns.zones[0].zone }}"
         }
 
         // String options that have a comma in their values need to have
@@ -267,7 +267,7 @@
     ],
 
     "dhcp-ddns": { "enable-updates": true},
-    "ddns-qualifying-suffix": "thiele.lan",
+    "ddns-qualifying-suffix": "{{ dns.zones[0].zone }}",
     "ddns-override-client-update": true,
 
 
