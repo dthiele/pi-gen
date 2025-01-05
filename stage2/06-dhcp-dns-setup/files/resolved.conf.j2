@@ -1,0 +1,15 @@
+[Resolve]
+DNS=127.0.0.1 8.8.8.8 1.1.1.1
+#FallbackDNS=1.1.1.1#cloudflare-dns.com 9.9.9.9#dns.quad9.net 8.8.8.8#dns.google 2606:4700:4700::1111#cloudflare-dns.com 2620:fe::9#dns.quad9.net 2001:4860:4860::8888#dns.google
+Domains={% for z in dns.zones %}{{z.zone}}{% if not loop.last %} {% endif %}{% endfor %}
+#DNSSEC=no
+#DNSOverTLS=no
+#MulticastDNS=yes
+#LLMNR=yes
+#Cache=yes
+#CacheFromLocalhost=no
+#DNSStubListener=yes
+#DNSStubListenerExtra=
+#ReadEtcHosts=yes
+#ResolveUnicastSingleLabel=no
+#StaleRetentionSec=0

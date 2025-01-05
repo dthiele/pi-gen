@@ -25,3 +25,10 @@ mkdir -p "${ROOTFS_DIR}/etc/kea"
 j2 -f json files/kea-dhcp4.conf.j2  ${CONFIG_JSON} > "${ROOTFS_DIR}/etc/kea/kea-dhcp4.conf"
 ## Extend $CONFIG_JSON with properties extracted from the TSIG key file
 jq ". |= (.dns.ddns.key = \"$(grep secret ${ROOTFS_DIR}/etc/kea-dhcp-ns.key | sed -e 's/.*secret "//;s/";.*//')\") | (.dns.ddns.key_name = \"$(grep ^key ${ROOTFS_DIR}/etc/kea-dhcp-ns.key | sed -e 's/^key "\(.*\)".*/\1/')\")" ${CONFIG_JSON} | j2 -f json files/kea-dhcp-ddns.conf.j2 > "${ROOTFS_DIR}/etc/kea/kea-dhcp-ddns.conf"
+
+# Resolver
+j2 -f json files/resolved.conf.j2  ${CONFIG_JSON} > "${ROOTFS_DIR}/etc/systemd/resolved.conf"
+
+on_chroot << EOF
+systemctl enable systemd-resolved
+EOF
