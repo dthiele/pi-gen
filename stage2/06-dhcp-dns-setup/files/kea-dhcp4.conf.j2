@@ -96,7 +96,7 @@
         // but it's a lot of writing, so it's easier to do this instead:
         {
             "name": "domain-name-servers",
-            "data": "{{dns.server.ipv4_address}}, 8.8.8.8, 1.1.1.1"
+            "data": "{{dns.server.ipv4_address}}, 9.9.9.9"
         },
 
         // Typically people prefer to refer to options by their names, so they
@@ -259,7 +259,7 @@
                 },
         	{
             		"name": "domain-name-servers",
-            		"data": "{{dns.server.ipv4_address}}, 8.8.8.8, 1.1.1.1"
+            		"data": "{{dns.server.ipv4_address}}, 9.9.9.9"
         	}
             ]
         }{% if not loop.last %},{% endif %}
