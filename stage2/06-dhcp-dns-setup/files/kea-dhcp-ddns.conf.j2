@@ -20,7 +20,7 @@
       {
         "name": "{{z.zone}}.",
 	"key-name": "{{dns.ddns.key_name}}",
-	"dns-servers": [ {"ip-address": "10.0.2.1"} ]
+	"dns-servers": [ {"ip-address": "{{dns.server.ipv4_address}}"} ]
       }
     ]
   },
@@ -29,7 +29,7 @@
       {
         "name": "{{z.reverse}}.in-addr.arpa.",
 	"key-name": "{{dns.ddns.key_name}}",
-	"dns-servers": [ {"ip-address": "10.0.2.1"} ]
+	"dns-servers": [ {"ip-address": "{{dns.server.ipv4_address}}"} ]
       }
     ]
   },

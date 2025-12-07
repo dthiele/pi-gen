@@ -254,7 +254,7 @@
     },
     "zones": [
       {
-        "zone": "thiele.lan",
+        "zone": "dthiele.internal",
         "reverse": "10",
         "hosts": [
           {
