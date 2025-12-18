@@ -1,0 +1,48 @@
+version: 4
+mqtt:
+  base_topic: {{mqtt.topic|default("test_zigbee2mqtt")}}
+  server: mqtt://{{mqtt.server}}:{{mqtt.port}}
+  user: {{mqtt.user}}
+  password: {{mqtt.password}}
+serial:
+  port: /dev/ttyUSB0
+  adapter: zstack
+  baudrate: 115200
+  rtscts: false
+advanced:
+  log_level: info
+  channel: {{zigbee2mqtt.channel|default("11")}}
+{%- if zigbee2mqtt.network_key is not defined or zigbee2mqtt.network_key|length != 16 %}
+  network_key: GENERATE
+{%- else %}
+  network_key:
+{%- for k in zigbee2mqtt.network_key %}
+    - {{k}}
+{%- endfor %}
+{%- endif %}
+{%- if zigbee2mqtt.pan_id == -1 %}
+  pan_id: GENERATE
+{%- else %}
+  pan_id: {{zigbee2mqtt.pan_id}}
+{%- endif %}
+{%- if zigbee2mqtt.ext_pan_id is not defined or zigbee2mqtt.ext_pan_id|length != 8 %}
+  ext_pan_id: GENERATE
+{%- else %}
+  ext_pan_id:
+{%- for k in zigbee2mqtt.ext_pan_id %}
+    - {{k}}
+{%- endfor %}
+{%- endif %}
+frontend:
+  enabled: true
+  port: 8080
+homeassistant:
+  enabled: false
+devices: {}
+
+
+
+
+
+
+
