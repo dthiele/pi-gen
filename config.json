@@ -1,0 +1,19 @@
+{
+  "wifi": {
+    "ssid": "",
+    "password": ""
+  },
+  "zigbee2mqtt": {
+    "network_key": [],
+    "pan_id": -1,
+    "ext_pan_id": [],
+    "channel": 20
+  },
+  "mqtt": {
+    "topic": "zigbee2mqtt",
+    "server": "10.0.128.2",
+    "port": 1883,
+    "user": "mqtt",
+    "password": "mqtt"
+  }
+}
